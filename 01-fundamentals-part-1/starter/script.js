@@ -347,21 +347,39 @@
 ////////////////////////////////////
 // The Conditional (Ternary) Operator
 
-const age = 20;
+// const age = 20;
 
-// basic ternary: condition ? valueifTrue : valueifFalse
-const drink = age >= 18 ? `wine` : `water`;
-console.log(drink); 
+// // basic ternary: condition ? valueifTrue : valueifFalse
+// const drink = age >= 18 ? `wine` : `water`;
+// console.log(drink); 
 
-// if else statement
-let drink2;
-if (age >= 18) {
-    drink2 = `wine`;
-} else {
-    drink2 = `water`;
-}
+// // if else statement
+// let drink2;
+// if (age >= 18) {
+//     drink2 = `wine`;
+// } else {
+//     drink2 = `water`;
+// }
 
-console.log(drink2);
+// console.log(drink2);
+// console.log(`I like to drink ${age >= 18 ? `wine` : `water`}`);
 
+////////////////////////////////////
+// Coding Challenge #4
 
-console.log(`I like to drink ${age >= 18 ? `wine` : `water`}`);
+const bill = 430; // Test with 275, 40, and 430
+
+// Step 1: Create the tip calculation using ternary operator
+// Rule: 15% if between 50-300, otherwise 20%
+// Hint: bill >= 50 && bill <= 300
+
+const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
+    
+// Step 2: Create beautiful output with template literal
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
+
+// Expected outputs:
+// Bill 275: "The bill was 275, the tip was 41.25, and the total value 316.25"
+// Bill 40:  "The bill was 40, the tip was 8, and the total value 48"
+// Bill 430: "The bill was 430, the tip was 86, and the total value 516"
+
