@@ -608,4 +608,4 @@ input.addEventListener("keydown", function () {
         display.textContent = `You pressed Enter! Text was ${input.value}`;
         input.value = ""; //clear input
     }
-});
+}); 
