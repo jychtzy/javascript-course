@@ -65,10 +65,23 @@ document.querySelector('.check').addEventListener('click', function () {
     const guess = Number(document.querySelector('.guess').value);
 console.log('Player guessed:', guess);
 
+// if you did not input any number or data sa inpur, show no number
+if (!guess) {
+    document.querySelector('.message').textContent = 'No Number';
+    return;
+}
+
+if (guess) {
+    document.querySelector('.message').textContent = 
+    'Number must be between 1 and 20';
+    return;
+}
+
 if(guess === secretNumber) {
     console.log('Correct guess');
-    document.querySelector('.message').textContent = 'Correct Number';
+    //document.querySelector('.message').textContent = 'Correct Number';
     document.querySelector('.number').textContent =  secretNumber;
+    document.body.style.backgroundColor = 'green';
     if (score > highscore) {
         highscore = score;
         document.querySelector('.highscore').textContent = highscore;
@@ -90,6 +103,7 @@ if(guess === secretNumber) {
         document.querySelector('.guess').disabled = true;
         // disabled button click
         document.querySelector('.check').disabled = true;
+        document.querySelector('.message)').textContent = 'Game Over! :(';
         }
     } else if (guess < secretNumber) {
         console.log('Too low');
@@ -103,6 +117,8 @@ if(guess === secretNumber) {
         document.querySelector('.guess').disabled = true;
         // disabled button click
         document.querySelector('.check').disabled = true;
+        document.querySelector('.message)').textContent = 'Game Over! :(';
+        document.body.style.backgroundColor = 'red';
     }
 }
 });
@@ -111,9 +127,12 @@ document.querySelector('.again').addEventListener('click', function () {
     console.log('Again button is working!!!!');
     score = 20;
     secretNumber = Math.trunc(Math.random() * 20) + 1;
+    console.log('You new secret number after restart:', secretNumber);
     document.querySelector('.message').textContent = 'Start guessing...';
-    document.querySelector('.score').textContent = '?';
+    document.querySelector('.number').textContent = '?';
+    document.querySelector('.score').textContent = score;
     document.querySelector('.guess').value = '';
     document.querySelector('.guess').disabled = false;
     document.querySelector('.check').disabled = false;
+    document.body.style.backgroundColor = '';
 });
