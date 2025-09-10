@@ -61,15 +61,59 @@ console.log('Game Active:', gameActive);
 document.querySelector('.check').addEventListener('click', function () {
     // code here
     console.log('Check button clicked!!');
-});
 
-const guess = Number(document.querySelector('.value').value);
+    const guess = Number(document.querySelector('.guess').value);
 console.log('Player guessed:', guess);
 
 if(guess === secretNumber) {
     console.log('Correct guess');
     document.querySelector('.message').textContent = 'Correct Number';
     document.querySelector('.number').textContent =  secretNumber;
-} else if (guess > secretNumber);
-    console.log('Too high!');
-    document.querySelector('.message').textContent = 'Too high!!!!';
+    if (score > highscore) {
+        highscore = score;
+        document.querySelector('.highscore').textContent = highscore;
+        document.querySelector('.message').textContent = 'You have won!!'
+        // disabled guess input type
+        document.querySelector('.guess').disabled = true;
+        // disabled button click
+        document.querySelector('.check').disabled = true;
+    }
+    } else if (guess > secretNumber) {
+        console.log('Too high!');
+        document.querySelector('.message').textContent = 'Too high!!';
+        score--;
+        document.querySelector('.score').textContent = score;
+        if (score < 1) {
+            document.querySelector('.message').textContent = "You have lost!!"
+            document.querySelector('.number').textContent = secretNumber;
+            // disabled guess input type
+        document.querySelector('.guess').disabled = true;
+        // disabled button click
+        document.querySelector('.check').disabled = true;
+        }
+    } else if (guess < secretNumber) {
+        console.log('Too low');
+        document.querySelector('.message').textContent = 'Too low!!!';
+        score--;
+        document.querySelector('.score').textContent = score;
+        if (score < 1) {
+            document.querySelector('.message').textContent = "You have lost!!"
+            document.querySelector('.number').textContent = secretNumber;
+            // disabled guess input type
+        document.querySelector('.guess').disabled = true;
+        // disabled button click
+        document.querySelector('.check').disabled = true;
+    }
+}
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+    console.log('Again button is working!!!!');
+    score = 20;
+    secretNumber = Math.trunc(Math.random() * 20) + 1;
+    document.querySelector('.message').textContent = 'Start guessing...';
+    document.querySelector('.score').textContent = '?';
+    document.querySelector('.guess').value = '';
+    document.querySelector('.guess').disabled = false;
+    document.querySelector('.check').disabled = false;
+});
