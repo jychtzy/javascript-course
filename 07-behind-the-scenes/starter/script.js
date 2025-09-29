@@ -90,23 +90,78 @@
 // timer.start();
 // timer.startModern();
 
-const functionTypes = {
-    regularFunction: function() {
-        console.log('Argument length:', arguments.length);
-        console.log('First argument:', arguments[0]);
-    },
+// const functionTypes = {
+//     regularFunction: function() {
+//         console.log('Argument length:', arguments.length);
+//         console.log('First argument:', arguments[0]);
+//     },
 
-    arrowFunction: () => {
-        console.log(arguments);
-        console.log('Arrow function called');
-    },
+//     arrowFunction: () => {
+//         console.log(arguments);
+//         console.log('Arrow function called');
+//     },
 
-    modernFunction: (...args) => {
-        console.log('Args length:', args.length);
-        console.log('First arg:', args[0]);
-    }
+//     modernFunction: (...args) => {
+//         console.log('Args length:', args.length);
+//         console.log('First arg:', args[0]);
+//     }
+// };
+
+// functionTypes.regularFunction('hello', 'goodbye');
+// //functionTypes.arrowFunction('test');
+// functionTypes.modernFunction('modern', 'approach');
+
+// let age = 30;
+
+// let oldAge = age;
+
+// age = 31;
+
+// console.log('age', age);
+// console.log('oldAge', oldAge); 
+
+// const me = { name: 'A-j', age: 21 };
+
+// const friend = me;
+
+// friend.name = 'Arjay';
+// friend.age = 20;
+
+// console.log('Me:', me);
+// console.log('friend:', friend);
+
+// const original = {
+//     name: 'A-j',
+//     age: 21,
+//     hobbies: ['eating', 'playing e-games'],
+// };
+
+// const shallowCopy = { ...original };
+
+// shallowCopy.name = 'Arjay';
+
+// console.log('original:', original.name);
+// console.log('copy name:', shallowCopy.name);
+
+// shallowCopy.hobbies.push('gaming');
+
+// console.log(original.hobbies);
+// console.log(shallowCopy.hobbies);
+
+const deepOriginal = {
+    name: 'A-j',
+    age: 21,
+    // nested object
+    address: { city: 'Quezon City', country: 'Philippines' },
+    // nested array
+    hobbies:['eating', 'playing e-games'],
 };
 
-functionTypes.regularFunction('hello', 'goodbye');
-//functionTypes.arrowFunction('test');
-functionTypes.modernFunction('modern', 'approach');
+const deepCopy = structuredClone(deepOriginal);
+
+deepCopy.address.city = 'Hawaii';
+deepCopy.hobbies.push('traveling');
+deepCopy.name = 'Arjay';
+
+console.log('deepOriginal:', deepOriginal);
+console.log('deepCopy:', deepCopy); 
